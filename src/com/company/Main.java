@@ -46,8 +46,7 @@ public class Main {
         MarkManagement mm = new MarkManagement();
 
         String input;
-        boolean do1 = false, isTrue;
-        //boolean isTrue;
+        boolean do1 = false;
         int choice = 0;
         Scanner in = new Scanner(System.in);
 
@@ -67,7 +66,6 @@ public class Main {
                     System.out.println("Nhap so nguyen tu 0 -> 3");
                 } else {
                     do2 = true;
-                    break;
                 }
             } while (!do2);
 
@@ -81,13 +79,13 @@ public class Main {
                     studentList = sm.go();
                     writeFile(studentList, studentFile);
                     break;
-//                case 2:
-//                    classList = fileToArrayList(classFile, Class[].class);
-//                    if (classList != null) cm.setList(classList);
-//
-//                    classList = cm.go();
-//                    writeFile(classList, classFile);
-//                    break;
+                case 2:
+                    classList = fileToArrayList(classFile, Class[].class);
+                    if (classList != null) cm.setList(classList);
+
+                    classList = cm.go();
+                    writeFile(classList, classFile);
+                    break;
                 case 3:
 
                     markList = fileToArrayList(markFile, Mark[].class);

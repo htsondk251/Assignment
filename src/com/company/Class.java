@@ -61,7 +61,7 @@ public class Class implements Cloneable {
         return "Class{code=" + classCode + ",name=" + className + ",lecturer=" + lecturerName + ",studyTime=" + studyTime + ",studyDays=" + studyDays + "}";
     }
 
-    public Class clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 }

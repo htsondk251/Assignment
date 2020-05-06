@@ -70,29 +70,6 @@ public class StudentManagement {
 
     }
 
-//    public boolean Remove() {
-//        boolean result = false;
-//        Scanner in = new Scanner(System.in);
-////		do {
-//        System.out.print("Nhap code:  ");
-//        String code = in.nextLine();
-//        int i = list.indexOf(getStudent(code));
-//        if(i != -1) {
-//            System.out.println(list.get(i));
-//            System.out.println("Ban muon xoa nguoi nay? Y/N");
-//            code = in.nextLine();
-//            if (code.toLowerCase().equals("y")) {
-//                list.remove(i);
-//                result = true;
-//            }
-//        } else {
-//            System.out.println("Khong ton tai");
-//            System.out.println(result);
-//        }
-////		} while(!do);
-//
-//        return result;
-//    }
 
     public void Display() {
         for(Student e: list)
@@ -130,7 +107,7 @@ public class StudentManagement {
 
     //start method
     public ArrayList<Student> go() {
-        boolean do1 = false, do2 = false, isTrue;
+        boolean do1 = false, isTrue;
         String input;
         int choice = 0;
 //        Scanner in = new Scanner(System.in);
@@ -142,6 +119,7 @@ public class StudentManagement {
             System.out.println("3. Them moi mot sinh vien");
             System.out.println("0. Tro ve Menu chinh");
             System.out.println("====================================");
+            boolean do2 = false;
             do {
                 System.out.print("Chon ");
                 input = in.nextLine();
@@ -228,3 +206,28 @@ public class StudentManagement {
         return true;
     }
 }
+
+//    public boolean Remove() {
+//        boolean result = false;
+//        Scanner in = new Scanner(System.in);
+////		do {
+//        System.out.print("Nhap code:  ");
+//        String code = in.nextLine();
+//        int i = list.indexOf(getStudent(code));
+//        if(i != -1) {
+//            System.out.println(list.get(i));
+//            System.out.println("Ban muon xoa nguoi nay? Y/N");
+//            code = in.nextLine();
+//            if (code.toLowerCase().equals("y")) {
+//                list.remove(i);
+//                result = true;
+//            }
+//        } else {
+//            System.out.println("Khong ton tai");
+//            System.out.println(result);
+//        }
+////		} while(!do);
+//
+//        return result;
+//    }
+

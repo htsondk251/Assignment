@@ -13,7 +13,7 @@ public class ClassManagement {
         list.clear();
         if (classList != null) {
             for (Class c : classList) {
-                list.add(c.clone());
+                list.add((Class) c.clone());
             }
         }
 //        this.list = (ArrayList<Class>) classList;
