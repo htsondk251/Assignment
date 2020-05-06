@@ -1,0 +1,224 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ClassManagement {
+    private ArrayList<Class> list = new ArrayList<>();
+
+    Scanner in = new Scanner(System.in);
+
+    public void setList(List<Class> classList) throws CloneNotSupportedException {
+        list.clear();
+        if (classList != null) {
+            for (Class c : classList) {
+                list.add(c.clone());
+            }
+        }
+//        this.list = (ArrayList<Class>) classList;
+    }
+
+    public boolean Add() {
+        boolean result = false;
+        Class e = new Class();
+//        Scanner in = new Scanner(System.in);
+
+        System.out.print("Nhap ma: ");
+        String code = in.nextLine();
+        int i = list.indexOf(getClass(code));
+        if(i != -1) {
+            System.out.print("Ma da ton tai. ");
+        } else {
+            e = inputInfo();
+            if (e != null) {
+                list.add(e);
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public boolean Modify() {
+        boolean result = false;
+        Class e = new Class();
+//        Scanner in = new Scanner(System.in);
+
+        System.out.print("Nhap ma:  ");
+        String code = in.nextLine();
+        int i = list.indexOf(getClass(code));
+        if(i != -1) {
+            e = inputInfo();
+            boolean do1 = false;
+            do {
+                System.out.println("Ban co muon cap nhat thong tin?(Y/N)");
+                code = in.nextLine();
+                if (code.toLowerCase().equals("y")) {
+                    do1 = true;
+                    if (e != null) {
+                        list.set(i, e);
+                        result = true;
+                    }
+                } else if (code.toLowerCase().equals("n")) {
+                    do1 = true;
+                }
+            } while(!do1);
+        } else {
+            System.out.println("Khong ton tai");
+        }
+        return result;
+    }
+
+    public void Display() {
+        for(Class e: list)
+            System.out.println(e);
+    }
+
+    //import info
+    public Class inputInfo() {
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Nhap ma:  ");
+        String code = in.nextLine();
+        System.out.print("Nhap ten:  ");
+        String name = in.nextLine();
+        System.out.print("Nhap ten giang vien: ");
+        String lecturer = in.nextLine();
+        System.out.print("Nhap gio hoc:");
+        String studyTime = in.nextLine();
+        System.out.print("Nhap ngay hoc:");
+        String studyDays = in.nextLine();
+
+        Class e = new Class(code, name, lecturer, studyTime, studyDays);
+        return e;
+    }
+
+    //return class on the list base on classCode
+    public Class getClass(String code) {		//how to get 1st instance variable
+        for(Class e : list) {
+            if (e.getClassCode().equals(code)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    //start method
+    public ArrayList<Class> go() {
+        boolean do1 = false, isTrue;
+        String input;
+        int choice = 0;
+//        Scanner in = new Scanner(System.in);
+
+        do {
+            System.out.println("====================================");
+            System.out.println("1. Xem danh sach lop");
+            System.out.println("2. Cap nhat thong tin lop");
+            System.out.println("3. Them moi mot lop");
+            System.out.println("0. Tro ve Menu chinh");
+            System.out.println("====================================");
+            boolean do2 = false;
+            do {
+                System.out.print("Chon ");
+                input = in.nextLine();
+                if ((input.trim().isEmpty()) || (!isNumber(input)) || (isNumber(input) && ((Integer.parseInt(input) > 3) || (Integer.parseInt(input) < 0)))) {
+                    System.out.println("Nhap so nguyen tu 0 -> 3");
+                } else {
+                    do2 = true;
+                }
+            } while (!do2);
+
+            choice = Integer.parseInt(input);
+
+            switch(choice) {
+                case 1:
+                    this.Display();
+                    break;
+                case 2:
+                    boolean do3 = false;
+                    do {
+                        isTrue = this.Modify();
+                        if (isTrue == true) {
+                            System.out.println("Thong tin da duoc cap nhat");
+                        }
+                        boolean do4 = false;
+                        do {
+                            System.out.println("Ban muon tiep tuc?(Y/N)");
+                            input = in.nextLine();
+                            if (input.toLowerCase().equals("y")) {
+                                do3 = false;
+                                do4 = true;
+                            } else if (input.toLowerCase().equals("n")){
+                                do3 = true;
+                                do4 = true;
+                            }
+                        } while(!do4);
+                    } while(!do3);
+                    break;
+                case 3:
+                    boolean do5 = false;
+                    do {
+                        isTrue = this.Add();
+                        if (isTrue == true) {
+                            System.out.println("add complete");
+                        } else {
+                            System.out.println("not add");
+                        }
+                        boolean do6 = false;
+                        do {
+                            System.out.println("Ban muon tiep tuc?(Y/N)");
+                            input = in.nextLine();
+                            if (input.toLowerCase().equals("y")) {
+                                do5 = false;
+                                do6 = true;
+                            } else if (input.toLowerCase().equals("n")) {
+                                do5 = true;
+                                do6 = true;
+                            }
+                        } while(!do6);
+                    } while(!do5);
+                    break;
+                case 0:
+                    do1 = true;
+                    break;
+//                default:
+//                    System.out.println("Nhap tu 0 den 3 thoi cha noi");
+//                    break;
+            }
+        } while(!do1);
+        return list;
+    }
+
+    boolean isNumber(String s) {
+        if(s != "") {
+            for (int i = 0; i < s.length(); i++) {
+                if (Character.isDigit(s.charAt(i)) == false) return false;
+            }
+        }
+        return true;
+    }
+}
+
+//    public boolean Remove() {
+//        boolean result = false;
+//        Scanner in = new Scanner(System.in);
+////		do {
+//        System.out.print("Nhap code:  ");
+//        String code = in.nextLine();
+//        int i = list.indexOf(getClass(code));
+//        if(i != -1) {
+//            System.out.println(list.get(i));
+//            System.out.println("Ban muon xoa nguoi nay? Y/N");
+//            code = in.nextLine();
+//            if (code.toLowerCase().equals("y")) {
+//                list.remove(i);
+//                result = true;
+//            }
+//        } else {
+//            System.out.println("Khong ton tai");
+//            System.out.println(result);
+//        }
+////		} while(!do);
+//
+//        return result;
+//    }

@@ -1,0 +1,1 @@
+[{"classCode":"JW01","studentName":"HTS","subject":"OOP","mark":16.0,"evaluation":true},{"classCode":"JW01","studentName":"ZNguyen","subject":"SPB","mark":9.0,"evaluation":false},{"classCode":"SB01","studentName":"Hoa","subject":"OOP","mark":18.0,"evaluation":true},{"classCode":"SB01","studentName":"Duc","subject":"SPB","mark":14.0,"evaluation":true}]
